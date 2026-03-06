@@ -1,6 +1,4 @@
-/**
- * Estilos globais da aplicação
- */
+/* Estilos globais da aplicação */
 import { StyleSheet } from 'react-native';
 import { COLORS, FONT_SIZES, SPACING } from '../constants/theme';
 
@@ -304,6 +302,63 @@ const styles = StyleSheet.create({
     modalButtonText: {
         fontSize: FONT_SIZES.body,
         fontWeight: 'bold',
+        color: COLORS.textPrimary,
+    },
+
+    /* ==================== ESTILOS DA CALCULADORA ==================== */
+    calculatorContainer: {
+        flex: 1,
+        backgroundColor: COLORS.background,
+    },
+    calculatorDisplayContainer: {
+        paddingHorizontal: SPACING.xl + SPACING.md,
+        paddingTop: SPACING.xs,
+        paddingBottom: SPACING.xs,
+        alignItems: 'flex-end',
+    },
+    calculatorDisplay: {
+        fontSize: 56,
+        fontWeight: 'bold',
+        color: COLORS.textPrimary,
+        letterSpacing: -1,
+    },
+    calculatorExpression: {
+        fontSize: FONT_SIZES.subtitle,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.xs,
+    },
+    calculatorKeyboard: {
+        paddingHorizontal: SPACING.xl,
+        paddingBottom: SPACING.xl,
+        marginTop: SPACING.xs,
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    calculatorRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: SPACING.md,
+    },
+    calculatorButton: {
+        flex: 1,
+        marginHorizontal: SPACING.sm,
+        height: 70,
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    calculatorButtonOperator: {
+        backgroundColor: COLORS.warning,
+    },
+    calculatorButtonNumber: {
+        backgroundColor: COLORS.card,
+    },
+    calculatorButtonZero: {
+        flex: 2,
+    },
+    calculatorButtonText: {
+        fontSize: 28,
+        fontWeight: '600',
         color: COLORS.textPrimary,
     },
 });

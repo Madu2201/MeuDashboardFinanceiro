@@ -1,5 +1,5 @@
 /**
- * Aplicação Principal - Dashboard Financeiro
+ * Aplicação Principal - Dashboard Financeiro + Calculadora
  * Gerencia navegação entre abas e estado global
  */
 import React, { useState } from 'react';
@@ -9,21 +9,22 @@ import { AddModal } from './components/AddModal';
 import { DashboardScreen } from './screens/DashboardScreen';
 import { TransactionsScreen } from './screens/TransactionsScreen';
 import { AddScreen } from './screens/AddScreen';
+import  CalculatorScreen from './screens/CalculatorScreen';
 import styles from './styles/globalStyles';
 import { TABS, TabName } from './constants/theme';
 
 export default function App() {
     const { saldo, transacoes, addTransacao, entradasMes, saidasMes } = useFinance();
 
-    // Estado de navegação
+    // Estado de navegação (agora com 4 abas)
     const [activeTab, setActiveTab] = useState<TabName>(TABS.DASHBOARD);
 
-    // Estado do modal
+    // Estado do modal de adicionar transação
     const [modalVisible, setModalVisible] = useState(false);
     const [modalType, setModalType] = useState<'entrada' | 'saida' | null>(null);
 
     /**
-     * Abre o modal com tipo especificado
+     * Abre o modal para adicionar entrada ou saída
      */
     const openModal = (type: 'entrada' | 'saida') => {
         setModalType(type);
@@ -49,7 +50,7 @@ export default function App() {
     };
 
     /**
-     * Renderiza a tela ativa
+     * Renderiza a tela ativa de acordo com a aba selecionada
      */
     const renderContent = () => {
         switch (activeTab) {
@@ -70,6 +71,8 @@ export default function App() {
                         onAddSaida={() => openModal('saida')}
                     />
                 );
+            case TABS.CALCULATOR:
+                return <CalculatorScreen />;
             default:
                 return null;
         }
@@ -137,6 +140,25 @@ export default function App() {
                         ]}
                     >
                         Adicionar
+                    </Text>
+                </TouchableOpacity>
+
+                {/* Nova aba: Calculadora */}
+                <TouchableOpacity
+                    style={[
+                        styles.tabButton,
+                        activeTab === TABS.CALCULATOR && styles.tabButtonActive,
+                    ]}
+                    onPress={() => setActiveTab(TABS.CALCULATOR)}
+                    activeOpacity={0.7}
+                >
+                    <Text
+                        style={[
+                            styles.tabText,
+                            activeTab === TABS.CALCULATOR && styles.tabTextActive,
+                        ]}
+                    >
+                        Calculadora
                     </Text>
                 </TouchableOpacity>
             </View>

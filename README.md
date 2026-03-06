@@ -78,7 +78,8 @@ src/
 ├── screens/                     # Telas completas
 │   ├── DashboardScreen.tsx
 │   ├── TransactionsScreen.tsx
-│   └── AddScreen.tsx
+│   ├── AddScreen.tsx
+│   └── CalculatorScreen.tsx    # Calculadora
 ├── hooks/                       # Lógica de estado
 │   └── useFinance.ts
 ├── data/                        # Tipos TypeScript
@@ -109,6 +110,8 @@ src/
 ✅ Lista de transações recentes
 
 ✅ Adicionar novas entradas e saídas através de modal
+
+✅ Calculadora integrada para operações rápidas
 
 ✅ Interface limpa, responsiva e intuitiva
 

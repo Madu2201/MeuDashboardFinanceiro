@@ -49,6 +49,7 @@ export const TABS = {
   DASHBOARD: 'dashboard',
   TRANSACTIONS: 'transacoes',
   ADD: 'adicionar',
+  CALCULATOR: 'calculadora',   // ← Nova aba
 } as const;
 
 export type TabName = typeof TABS[keyof typeof TABS];
