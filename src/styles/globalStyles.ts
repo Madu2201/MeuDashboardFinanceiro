@@ -311,13 +311,13 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background,
     },
     calculatorDisplayContainer: {
-        paddingHorizontal: SPACING.xl + SPACING.md,
+        paddingHorizontal: SPACING.xl + SPACING.lg,
         paddingTop: SPACING.xs,
         paddingBottom: SPACING.xs,
         alignItems: 'flex-end',
     },
     calculatorDisplay: {
-        fontSize: 56,
+        fontSize: 48,
         fontWeight: 'bold',
         color: COLORS.textPrimary,
         letterSpacing: -1,
@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
         marginBottom: SPACING.xs,
     },
     calculatorKeyboard: {
-        paddingHorizontal: SPACING.xl,
+        paddingHorizontal: SPACING.xl + SPACING.sm,
         paddingBottom: SPACING.xl,
         marginTop: SPACING.xs,
         flex: 1,
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
     calculatorButton: {
         flex: 1,
         marginHorizontal: SPACING.sm,
-        height: 70,
+        height: 56,
         borderRadius: 12,
         justifyContent: 'center',
         alignItems: 'center',
@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     calculatorButtonText: {
-        fontSize: 28,
+        fontSize: 22,
         fontWeight: '600',
         color: COLORS.textPrimary,
     },
