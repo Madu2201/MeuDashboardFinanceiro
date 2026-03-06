@@ -2,27 +2,6 @@
 
 Um aplicativo de controle financeiro simples, bonito e bem estruturado, desenvolvido em **React Native** com **Expo** e **TypeScript**.
 
-## Índice
-- [📊 Meu Dashboard Financeiro](#-meu-dashboard-financeiro)
-  - [Índice](#índice)
-  - [🚀 Como Executar](#-como-executar)
-    - [1. Pré-requisitos](#1-pré-requisitos)
-    - [2. Instalação e Configuração](#2-instalação-e-configuração)
-  - [📁 Estrutura do Projeto](#-estrutura-do-projeto)
-    - [Princípios de Arquitetura](#princípios-de-arquitetura)
-  - [📋 Funcionalidades](#-funcionalidades)
-  - [📦 Dependências](#-dependências)
-  - [🔧 Padrões de Código](#-padrões-de-código)
-    - [Ordem de Imports](#ordem-de-imports)
-  - [🛠️ Como Estender](#️-como-estender)
-    - [Adicionar novo componente](#adicionar-novo-componente)
-    - [Adicionar nova tela](#adicionar-nova-tela)
-  - [📝 Principais Conceitos Utilizados](#-principais-conceitos-utilizados)
-    - [React Native](#react-native)
-    - [Componentes Principais](#componentes-principais)
-
----
-
 ## 🚀 Como Executar
 
 ### 1. Pré-requisitos
