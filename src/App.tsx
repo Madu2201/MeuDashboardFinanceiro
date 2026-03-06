@@ -1,7 +1,5 @@
-/**
- * Aplicação Principal - Dashboard Financeiro + Calculadora
- * Gerencia navegação entre abas e estado global
- */
+/* Aplicação Principal - Dashboard Financeiro + Calculadora
+   Gerencia navegação entre abas e estado global */
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StatusBar } from 'react-native';
 import { useFinance } from './hooks/useFinance';
@@ -23,25 +21,19 @@ export default function App() {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalType, setModalType] = useState<'entrada' | 'saida' | null>(null);
 
-    /**
-     * Abre o modal para adicionar entrada ou saída
-     */
+    /* Abre o modal para adicionar entrada ou saída */
     const openModal = (type: 'entrada' | 'saida') => {
         setModalType(type);
         setModalVisible(true);
     };
 
-    /**
-     * Fecha o modal
-     */
+    /* Fecha o modal */
     const closeModal = () => {
         setModalVisible(false);
         setModalType(null);
     };
 
-    /**
-     * Adiciona uma nova transação
-     */
+    /* Adiciona uma nova transação */
     const handleAddTransaction = (value: number, description: string) => {
         if (modalType) {
             addTransacao(modalType, value, description);
@@ -49,9 +41,7 @@ export default function App() {
         }
     };
 
-    /**
-     * Renderiza a tela ativa de acordo com a aba selecionada
-     */
+    /* Renderiza a tela ativa de acordo com a aba selecionada */
     const renderContent = () => {
         switch (activeTab) {
             case TABS.DASHBOARD:
@@ -59,8 +49,7 @@ export default function App() {
                     <DashboardScreen
                         saldo={saldo}
                         entradasMes={entradasMes}
-                        saidasMes={saidasMes}
-                    />
+                        saidasMes={saidasMes} />
                 );
             case TABS.TRANSACTIONS:
                 return <TransactionsScreen transactions={transacoes} />;
@@ -68,8 +57,7 @@ export default function App() {
                 return (
                     <AddScreen
                         onAddEntrada={() => openModal('entrada')}
-                        onAddSaida={() => openModal('saida')}
-                    />
+                        onAddSaida={() => openModal('saida')} />
                 );
             case TABS.CALCULATOR:
                 return <CalculatorScreen />;
@@ -95,14 +83,12 @@ export default function App() {
                         activeTab === TABS.DASHBOARD && styles.tabButtonActive,
                     ]}
                     onPress={() => setActiveTab(TABS.DASHBOARD)}
-                    activeOpacity={0.7}
-                >
+                    activeOpacity={0.7} >
                     <Text
                         style={[
                             styles.tabText,
                             activeTab === TABS.DASHBOARD && styles.tabTextActive,
-                        ]}
-                    >
+                        ]} >
                         Dashboard
                     </Text>
                 </TouchableOpacity>
@@ -113,14 +99,12 @@ export default function App() {
                         activeTab === TABS.TRANSACTIONS && styles.tabButtonActive,
                     ]}
                     onPress={() => setActiveTab(TABS.TRANSACTIONS)}
-                    activeOpacity={0.7}
-                >
+                    activeOpacity={0.7} >
                     <Text
                         style={[
                             styles.tabText,
                             activeTab === TABS.TRANSACTIONS && styles.tabTextActive,
-                        ]}
-                    >
+                        ]} >
                         Transações
                     </Text>
                 </TouchableOpacity>
@@ -131,14 +115,12 @@ export default function App() {
                         activeTab === TABS.ADD && styles.tabButtonActive,
                     ]}
                     onPress={() => setActiveTab(TABS.ADD)}
-                    activeOpacity={0.7}
-                >
+                    activeOpacity={0.7} >
                     <Text
                         style={[
                             styles.tabText,
                             activeTab === TABS.ADD && styles.tabTextActive,
-                        ]}
-                    >
+                        ]} >
                         Adicionar
                     </Text>
                 </TouchableOpacity>
@@ -150,14 +132,12 @@ export default function App() {
                         activeTab === TABS.CALCULATOR && styles.tabButtonActive,
                     ]}
                     onPress={() => setActiveTab(TABS.CALCULATOR)}
-                    activeOpacity={0.7}
-                >
+                    activeOpacity={0.7} >
                     <Text
                         style={[
                             styles.tabText,
                             activeTab === TABS.CALCULATOR && styles.tabTextActive,
-                        ]}
-                    >
+                        ]} >
                         Calculadora
                     </Text>
                 </TouchableOpacity>
@@ -171,8 +151,7 @@ export default function App() {
                 visible={modalVisible}
                 type={modalType}
                 onClose={closeModal}
-                onConfirm={handleAddTransaction}
-            />
+                onConfirm={handleAddTransaction} />
         </View>
     );
 }

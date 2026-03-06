@@ -46,8 +46,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                     style={[
                         styles.saldoValue,
                         isNegativeBalance && styles.saldoValueNegative,
-                    ]}
-                >
+                    ]}>
                     {formatCurrency(saldo)}
                 </Text>
 

@@ -1,7 +1,5 @@
-/**
- * Hook para gerenciar estado financeiro
- * Centraliza toda a lógica de transações e cálculos
- */
+/* Hook para gerenciar estado financeiro
+   Centraliza toda a lógica de transações e cálculos */
 import { useState } from 'react';
 import { Transaction, TransactionType } from '../data/types';
 import { calculateIncome, calculateExpenses, formatDate } from '../utils/formatting';
@@ -36,9 +34,7 @@ export const useFinance = () => {
     const [saldo, setSaldo] = useState(DEFAULT_BALANCE);
     const [transacoes, setTransacoes] = useState<Transaction[]>(DEFAULT_TRANSACTIONS);
 
-    /**
-     * Adiciona uma nova transação ao estado
-     */
+    /* Adiciona uma nova transação ao estado */
     const addTransacao = (
         type: TransactionType,
         value: number,
@@ -56,9 +52,7 @@ export const useFinance = () => {
         setSaldo((prev) => (type === 'entrada' ? prev + value : prev - value));
     };
 
-    /**
-     * Remove uma transação
-     */
+    /* Remove uma transação */
     const removeTransacao = (id: string) => {
         const transacao = transacoes.find((t) => t.id === id);
         if (!transacao) return;
@@ -69,9 +63,7 @@ export const useFinance = () => {
         );
     };
 
-    /**
-     * Edita uma transação
-     */
+    /* Edita uma transação */
     const editTransacao = (
         id: string,
         novosDados: Partial<Transaction>
@@ -81,9 +73,7 @@ export const useFinance = () => {
         );
     };
 
-    /**
-     * Calcula totais
-     */
+    /* Calcula totais */
     const entradasMes = calculateIncome(transacoes);
     const saidasMes = calculateExpenses(transacoes);
 

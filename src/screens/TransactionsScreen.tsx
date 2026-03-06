@@ -25,8 +25,7 @@ export const TransactionsScreen: React.FC<TransactionsScreenProps> = ({
                         data={transactions}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => <TransactionItem transaction={item} />}
-                        scrollEnabled={false}
-                    />
+                        scrollEnabled={false}/>
                 ) : (
                     <View style={{ paddingVertical: 20, alignItems: 'center' }}>
                         <Text style={styles.transactionDate}>

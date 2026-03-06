@@ -97,10 +97,7 @@ export default function CalculatorScreen() {
     ];
 
     return (
-        <ScrollView
-            style={styles.content}
-            showsVerticalScrollIndicator={false}
-        >
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
             <View style={styles.calculatorContainer}>
 
                 {/* Display da Calculadora */}
@@ -122,8 +119,7 @@ export default function CalculatorScreen() {
                                 const isZero = btn === '0';
 
                                 return (
-                                    <TouchableOpacity
-                                        key={btn}
+                                    <TouchableOpacity key={btn}
                                         style={[
                                             styles.calculatorButton,
                                             isOperator ? styles.calculatorButtonOperator : styles.calculatorButtonNumber,
@@ -134,8 +130,7 @@ export default function CalculatorScreen() {
                                             else if (btn === '=') calculate();
                                             else if (['+', '-', '×', '÷'].includes(btn)) handleOperation(btn);
                                             else handleNumber(btn);
-                                        }}
-                                    >
+                                        }}>
                                         <Text style={styles.calculatorButtonText}>{btn}</Text>
                                     </TouchableOpacity>
                                 );
@@ -143,7 +138,6 @@ export default function CalculatorScreen() {
                         </View>
                     ))}
                 </View>
-
             </View>
         </ScrollView>
     );

@@ -1,6 +1,4 @@
-/**
- * Tipos de dados globais do Dashboard Financeiro
- */
+/* Tipos de dados globais do Dashboard Financeiro */
 
 export type TransactionType = 'entrada' | 'saida';
 
