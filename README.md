@@ -42,28 +42,66 @@ npm install
 npm install nativewind tailwindcss
 npx tailwindcss init
 
-# 3. Configurar o projeto para usar NativeWind (importante!)
-#    → Criar ou substituir o arquivo babel.config.js na raiz
+# 3. Configuração Babel
+Crie ou edite o arquivo babel.config.js na raiz:
 
-# Iniciar o projeto (comando principal)
+js
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['nativewind/babel'],
+  };
+};
+
+# 4. Comandos principais do Expo
+
+# Iniciar o projeto normalmente
 npx expo start
 
-# Iniciar limpando todo o cache (recomendado quando o app não atualiza)
+# Iniciar limpando cache (quando o app não atualiza)
 npx expo start --clear --reset-cache
 
 # Abrir diretamente no navegador (modo web)
 # Após iniciar, pressione a tecla 'w' no terminal
+npx expo start --web
 
-# Resetar completamente o projeto (use quando estiver com muitos problemas)
+# Resetar completamente o projeto (quando há muitos problemas)
 npx expo reset-project
 
-# 4. Como Testar
-- No navegador (mais fácil no computador do trabalho):
-Inicie o projeto → pressione w
-- No celular (Expo Go):
-Conecte o celular na mesma rede Wi-Fi do roteador → escaneie o QR Code
-```
+# Apagar node_modules
+rmdir /s /q node_modules
 
+# Apagar package-lock.json
+del package-lock.json
+
+# Reinstalar dependências
+npm install
+
+# 5. Dependências para Web
+
+# Instalar suporte web (obrigatório para rodar no navegador)
+npx expo install react-dom react-native-web
+
+# 6. Como testar
+No navegador (computador):  
+Inicie o projeto → pressione w no terminal → abre no browser.
+No celular (Expo Go):  
+Conecte o celular na mesma rede Wi-Fi → escaneie o QR Code gerado pelo Expo.
+
+# 7. Dicas extras
+Se aparecer tela branca ou erro de MIME type, crie um arquivo index.web.js na raiz:
+
+js
+import { AppRegistry } from 'react-native';
+import App from './src/App';
+import { name as appName } from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
+AppRegistry.runApplication(appName, {
+  rootTag: document.getElementById('root'),
+});
+```
 
 ## 📁 Estrutura do Projeto
 
