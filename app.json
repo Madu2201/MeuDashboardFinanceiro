@@ -1,4 +1,5 @@
-{
+  // Esse arquivo configura as propriedades da aplicação Expo
+  {
   "expo": {
     "name": "Meu Dashboard Financeiro",
     "slug": "meu-dashboard-financeiro",

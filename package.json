@@ -1,5 +1,5 @@
 {
-  "name": "meucontador",
+  "name": "meu-dashboard-financeiro",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {

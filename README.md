@@ -1,19 +1,69 @@
 # 📊 Meu Dashboard Financeiro
 
-Dashboard financeiro moderno desenvolvido em React Native + TypeScript com Expo. Código bem estruturado, escalável e fácil de manter.
+Um aplicativo de controle financeiro simples, bonito e bem estruturado, desenvolvido em **React Native** com **Expo** e **TypeScript**.
 
-## 🚀 Quick Start
+## Índice
+- [📊 Meu Dashboard Financeiro](#-meu-dashboard-financeiro)
+  - [Índice](#índice)
+  - [🚀 Como Executar](#-como-executar)
+    - [1. Pré-requisitos](#1-pré-requisitos)
+    - [2. Instalação e Configuração](#2-instalação-e-configuração)
+  - [📁 Estrutura do Projeto](#-estrutura-do-projeto)
+    - [Princípios de Arquitetura](#princípios-de-arquitetura)
+  - [📋 Funcionalidades](#-funcionalidades)
+  - [📦 Dependências](#-dependências)
+  - [🔧 Padrões de Código](#-padrões-de-código)
+    - [Ordem de Imports](#ordem-de-imports)
+  - [🛠️ Como Estender](#️-como-estender)
+    - [Adicionar novo componente](#adicionar-novo-componente)
+    - [Adicionar nova tela](#adicionar-nova-tela)
+    - [Adicionar função utilitária](#adicionar-função-utilitária)
+  - [📝 Principais Conceitos Utilizados](#-principais-conceitos-utilizados)
+    - [React Native](#react-native)
+    - [Componentes Principais](#componentes-principais)
+    - [Hooks](#hooks)
+    - [TypeScript](#typescript)
+
+---
+
+## 🚀 Como Executar
+
+### 1. Pré-requisitos
+- Node.js (versão 20 ou superior)
+- Expo Go instalado no celular (para testar no dispositivo físico)
+
+### 2. Instalação e Configuração
 
 ```bash
-# Instalar dependências
+# 1. Instalar as dependências do projeto
 npm install
 
-# Iniciar desenvolvimento
-npm start
+# 2. Instalar NativeWind + Tailwind (para estilização)
+npm install nativewind tailwindcss
+npx tailwindcss init
 
-# Executar no simulador
-expo start --android  # ou --ios ou --web
+# 3. Configurar o projeto para usar NativeWind (importante!)
+#    → Criar ou substituir o arquivo babel.config.js na raiz
+
+# Iniciar o projeto (comando principal)
+npx expo start
+
+# Iniciar limpando todo o cache (recomendado quando o app não atualiza)
+npx expo start --clear --reset-cache
+
+# Abrir diretamente no navegador (modo web)
+# Após iniciar, pressione a tecla 'w' no terminal
+
+# Resetar completamente o projeto (use quando estiver com muitos problemas)
+npx expo reset-project
+
+# 4. Como Testar
+- No navegador (mais fácil no computador do trabalho):
+Inicie o projeto → pressione w
+- No celular (Expo Go):
+Conecte o celular na mesma rede Wi-Fi do roteador → escaneie o QR Code
 ```
+
 
 ## 📁 Estrutura do Projeto
 
@@ -21,150 +71,48 @@ expo start --android  # ou --ios ou --web
 src/
 ├── App.tsx                      # Navegação e estado global
 ├── components/                  # Componentes reutilizáveis
-│   ├── Card.tsx                # Container genérico
-│   ├── BarChart.tsx            # Gráfico de barras
-│   ├── TransactionItem.tsx     # Linha de transação
-│   └── AddModal.tsx            # Modal para adicionar
-├── screens/                     # Telas compostas
-│   ├── DashboardScreen.tsx     # Resumo + gráfico
-│   ├── TransactionsScreen.tsx  # Lista de transações
-│   └── AddScreen.tsx           # Botões de adição
+│   ├── Card.tsx
+│   ├── BarChart.tsx
+│   ├── TransactionItem.tsx
+│   └── AddModal.tsx
+├── screens/                     # Telas completas
+│   ├── DashboardScreen.tsx
+│   ├── TransactionsScreen.tsx
+│   └── AddScreen.tsx
 ├── hooks/                       # Lógica de estado
-│   └── useFinance.ts           # Gerencia financeiro
+│   └── useFinance.ts
 ├── data/                        # Tipos TypeScript
-│   └── types.ts                # Interfaces globais
+│   └── types.ts
 ├── constants/                   # Constantes da app
-│   └── theme.ts                # Cores, spacing, fontes
+│   └── theme.ts
 ├── styles/                      # Estilos
-│   └── globalStyles.ts         # StyleSheet centralizado
+│   └── globalStyles.ts
 └── utils/                       # Funções auxiliares
-    └── formatting.ts           # Formatação e cálculos
+    └── formatting.ts
 ```
 
-## 🏗️ Arquitetura
+### Princípios de Arquitetura
 
-### Componentes (`components/`)
-Componentes isolados e reutilizáveis:
-- **Card**: Container com estilo padrão
-- **BarChart**: Gráfico dinâmico
-- **TransactionItem**: Item tipado de transação
-- **AddModal**: Modal com validação
-
-### Telas (`screens/`)
-Composição de componentes + dados:
-- **DashboardScreen**: Exibe saldo e gráfico
-- **TransactionsScreen**: Lista completa
-- **AddScreen**: Interface para adicionar
-
-### Estado (`hooks/useFinance.ts`)
-Centraliza lógica financeira:
-```typescript
-const {
-  saldo,           // número
-  transacoes,      // Transaction[]
-  entradasMes,     // total entradas
-  saidasMes,       // total saídas
-  addTransacao,    // (type, value, description) => void
-  removeTransacao, // (id) => void
-  editTransacao    // (id, dados) => void
-} = useFinance();
-```
-
-### Tipos (`data/types.ts`)
-```typescript
-type TransactionType = 'entrada' | 'saida';
-
-interface Transaction {
-  id: string;
-  type: TransactionType;
-  description: string;
-  value: number;
-  date: string;
-}
-```
-
-## 🎨 Design
-
-- **Tema escuro**: Background #0f172a, Cards #1e293b
-- **Cores**: Verde #22c55e (entrada), Vermelho #ef4444 (saída)
-- **Responsivo**: Adapta a diferentes tamanhos
-- **TypeScript**: Totalmente tipado, sem `any`
+- **Feature-First**: Organização por funcionalidade
+- **Separação de Responsabilidades**: UI, lógica, tipos e estilos estão separados
+- **Componentes Reutilizáveis**: Card, Modal e TransactionItem podem ser usados em várias telas
+- **Estado Centralizado**: Toda lógica financeira em hooks
+- **TypeScript Strict**: Totalmente tipado, sem `any`
+- **Código Escalável**: Fácil de entender, manter e expandir
 
 ## 📋 Funcionalidades
 
-- ✅ Adicionar/remover/editar transações
-- ✅ Saldo em tempo real
-- ✅ Gráfico entradas vs saídas
-- ✅ Lista de transações com datas
-- ✅ Modal com validação de valores
-- ✅ Interface intuitiva e limpa
+✅ Dashboard com saldo em destaque e resumo mensal
 
-## 🔧 Padrões de Código
+✅ Gráfico de barras comparativo (Entradas × Saídas)
 
-### Nomes
-```
-Componentes: PascalCase           (Card.tsx, BarChart.tsx)
-Funções: camelCase               (formatCurrency, useFinance)
-Constantes: UPPER_SNAKE_CASE     (COLORS, SPACING, TABS)
-Tipos: PascalCase                (Transaction, ChartData)
-```
+✅ Lista de transações recentes
 
-### Componentes
-Todos seguem este padrão:
-```typescript
-import React from 'react';
-import { View, Text } from 'react-native';
-import styles from '../styles/globalStyles';
-import { SeuTipo } from '../data/types';
+✅ Adicionar novas entradas e saídas através de modal
 
-interface SeuComponenteProps {
-  titulo: string;
-  dados: SeuTipo[];
-}
+✅ Interface limpa, responsiva e intuitiva
 
-export const SeuComponente: React.FC<SeuComponenteProps> = ({
-  titulo,
-  dados,
-}) => {
-  return (
-    <View>
-      <Text style={styles.title}>{titulo}</Text>
-    </View>
-  );
-};
-
-export default SeuComponente;
-```
-
-### Imports (ordem)
-1. React/React Native
-2. Componentes locais
-3. Hooks/Utilitários
-4. Estilos
-5. Tipos
-
-## 🛠️ Como Estender
-
-### Adicionar novo componente
-1. Criar `src/components/MeuComponente.tsx`
-2. Definir interface Props
-3. Adicionar estilos em `globalStyles.ts`
-4. Usar em alguma tela
-
-### Adicionar nova tela
-1. Criar `src/screens/MinhaTelaScreen.tsx`
-2. Receber dados como props
-3. Em `App.tsx`, adicionar case em `renderContent()`
-4. Adicionar aba de navegação se necessário
-
-### Adicionar função utilitária
-1. Adicionar em `src/utils/formatting.ts`
-2. Exportar e usar onde necessário
-3. Manter funções puras (sem side effects)
-
-### Adicionar novo tipo
-1. Adicionar em `src/data/types.ts`
-2. Usar com `as const` para union types quando apropriado
+✅ Rolagem suave da tela
 
 ## 📦 Dependências
 
@@ -177,17 +125,55 @@ export default SeuComponente;
 }
 ```
 
-## 📝 Boas Práticas
+## 🔧 Padrões de Código
 
-- ✓ Separação clara de responsabilidades
-- ✓ Componentes pequenos e focados
-- ✓ Código comentado onde necessário
-- ✓ Props bem tipadas
-- ✓ Sem lógica complexa em componentes
-- ✓ Estado centralizado em hooks
-- ✓ Estilos não duplicados
-- ✓ Testes facilitados por arquitetura
+### Ordem de Imports
 
----
+1. React/React Native
+2. Componentes locais
+3. Hooks/Utilitários
+4. Estilos
+5. Tipos
 
-Projeto estruturado para crescer. Resenha simples e profissional! 🎉
+## 🛠️ Como Estender
+
+### Adicionar novo componente
+
+1. Criar `src/components/MeuComponente.tsx`
+2. Definir interface Props tipada
+3. Adicionar estilos em `globalStyles.ts`
+4. Usar em alguma tela existente
+
+### Adicionar nova tela
+
+1. Criar `src/screens/MinhaTelaScreen.tsx`
+2. Receber dados como props
+3. Em `App.tsx`, adicionar case em `renderContent()`
+4. Adicionar aba de navegação se necessário
+
+### Adicionar função utilitária
+
+1. Adicionar em `src/utils/formatting.ts`
+2. Exportar e usar onde necessário
+3. Manter funções puras (sem side effects)
+
+## 📝 Principais Conceitos Utilizados
+
+### React Native
+Framework que permite criar aplicativos nativos para Android e iOS usando JavaScript/TypeScript. Diferente do React para web, renderiza componentes nativos reais do sistema operacional.
+
+### Componentes Principais
+- **View** → Container de layout (equivalente a `<div>`)
+- **Text** → Único componente para exibir texto
+- **TouchableOpacity** → Botão clicável com efeito visual
+- **FlatList** → Lista performática de itens
+- **ScrollView** → Permite rolar a tela
+- **Modal** → Janela que aparece por cima da tela
+- **TextInput** → Campo para o usuário digitar
+
+### Hooks
+- **useState** → Controla variáveis que atualizam a tela
+- **useFinance** → Hook customizado que centraliza toda lógica financeira
+
+### TypeScript
+Tipagem estática para maior segurança e manutenibilidade, sem uso de `any`.
