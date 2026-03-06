@@ -17,12 +17,9 @@ Um aplicativo de controle financeiro simples, bonito e bem estruturado, desenvol
   - [🛠️ Como Estender](#️-como-estender)
     - [Adicionar novo componente](#adicionar-novo-componente)
     - [Adicionar nova tela](#adicionar-nova-tela)
-    - [Adicionar função utilitária](#adicionar-função-utilitária)
   - [📝 Principais Conceitos Utilizados](#-principais-conceitos-utilizados)
     - [React Native](#react-native)
     - [Componentes Principais](#componentes-principais)
-    - [Hooks](#hooks)
-    - [TypeScript](#typescript)
 
 ---
 
@@ -192,12 +189,6 @@ src/
 3. Em `App.tsx`, adicionar case em `renderContent()`
 4. Adicionar aba de navegação se necessário
 
-### Adicionar função utilitária
-
-1. Adicionar em `src/utils/formatting.ts`
-2. Exportar e usar onde necessário
-3. Manter funções puras (sem side effects)
-
 ## 📝 Principais Conceitos Utilizados
 
 ### React Native
@@ -211,10 +202,3 @@ Framework que permite criar aplicativos nativos para Android e iOS usando JavaSc
 - **ScrollView** → Permite rolar a tela
 - **Modal** → Janela que aparece por cima da tela
 - **TextInput** → Campo para o usuário digitar
-
-### Hooks
-- **useState** → Controla variáveis que atualizam a tela
-- **useFinance** → Hook customizado que centraliza toda lógica financeira
-
-### TypeScript
-Tipagem estática para maior segurança e manutenibilidade, sem uso de `any`.
