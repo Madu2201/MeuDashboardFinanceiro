@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     /* ===== HEADER ===== */
     header: {
         paddingHorizontal: SPACING.md,
-        paddingTop: SPACING.lg,
+        paddingTop: SPACING.xl + SPACING.md,
         paddingBottom: SPACING.md,
         backgroundColor: COLORS.background,
         borderBottomWidth: 1,
