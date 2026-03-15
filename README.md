@@ -11,26 +11,8 @@ Um aplicativo de controle financeiro simples, bonito e bem estruturado, desenvol
 ### 2. Instalação e Configuração
 
 ```bash
-# 1. Instalar as dependências do projeto
+# Instalar as dependências do projeto
 npm install
-
-# 2. Instalar NativeWind + Tailwind (para estilização)
-npm install nativewind tailwindcss
-npx tailwindcss init
-
-# 3. Configuração Babel
-Crie ou edite o arquivo babel.config.js na raiz:
-
-js
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: ['nativewind/babel'],
-  };
-};
-
-# 4. Comandos principais do Expo
 
 # Iniciar o projeto normalmente
 npx expo start
@@ -42,41 +24,9 @@ npx expo start --clear --reset-cache
 # Após iniciar, pressione a tecla 'w' no terminal
 npx expo start --web
 
-# Resetar completamente o projeto (quando há muitos problemas)
-npx expo reset-project
-
-# Apagar node_modules
-rmdir /s /q node_modules
-
-# Apagar package-lock.json
-del package-lock.json
-
 # Reinstalar dependências
 npm install
 
-# 5. Dependências para Web
-
-# Instalar suporte web (obrigatório para rodar no navegador)
-npx expo install react-dom react-native-web
-
-# 6. Como testar
-No navegador (computador):  
-Inicie o projeto → pressione w no terminal → abre no browser.
-No celular (Expo Go):  
-Conecte o celular na mesma rede Wi-Fi → escaneie o QR Code gerado pelo Expo.
-
-# 7. Dicas extras
-Se aparecer tela branca ou erro de MIME type, crie um arquivo index.web.js na raiz:
-
-js
-import { AppRegistry } from 'react-native';
-import App from './src/App';
-import { name as appName } from './app.json';
-
-AppRegistry.registerComponent(appName, () => App);
-AppRegistry.runApplication(appName, {
-  rootTag: document.getElementById('root'),
-});
 ```
 
 ## 📁 Estrutura do Projeto
@@ -130,54 +80,3 @@ src/
 ✅ Interface limpa, responsiva e intuitiva
 
 ✅ Rolagem suave da tela
-
-## 📦 Dependências
-
-```json
-{
-  "expo": "~55.0.5",
-  "react": "19.2.0",
-  "react-native": "0.83.2",
-  "typescript": "~5.9.2"
-}
-```
-
-## 🔧 Padrões de Código
-
-### Ordem de Imports
-
-1. React/React Native
-2. Componentes locais
-3. Hooks/Utilitários
-4. Estilos
-5. Tipos
-
-## 🛠️ Como Estender
-
-### Adicionar novo componente
-
-1. Criar `src/components/MeuComponente.tsx`
-2. Definir interface Props tipada
-3. Adicionar estilos em `globalStyles.ts`
-4. Usar em alguma tela existente
-
-### Adicionar nova tela
-
-1. Criar `src/screens/MinhaTelaScreen.tsx`
-2. Receber dados como props
-3. Em `App.tsx`, adicionar case em `renderContent()`
-4. Adicionar aba de navegação se necessário
-
-## 📝 Principais Conceitos Utilizados
-
-### React Native
-Framework que permite criar aplicativos nativos para Android e iOS usando JavaScript/TypeScript. Diferente do React para web, renderiza componentes nativos reais do sistema operacional.
-
-### Componentes Principais
-- **View** → Container de layout (equivalente a `<div>`)
-- **Text** → Único componente para exibir texto
-- **TouchableOpacity** → Botão clicável com efeito visual
-- **FlatList** → Lista performática de itens
-- **ScrollView** → Permite rolar a tela
-- **Modal** → Janela que aparece por cima da tela
-- **TextInput** → Campo para o usuário digitar
